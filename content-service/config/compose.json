@@ -1,0 +1,31 @@
+{
+    "app": {
+        "name": "betterx-content-service compose"
+    },
+    "db": {
+        "host": "database"
+    },
+    "io": {
+        "url": "http://io:3004"
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@rabbitmq:5672"
+    },
+    "services": {
+        "identity": {
+            "url": "http://identity-service:3010"
+        },
+        "ai": {
+            "url": "http://ai-service:3005"
+        },
+        "media": {
+            "url": "http://media-service:3006"
+        },
+        "engagement": {
+            "url": "http://engagement-service:3008"
+        },
+        "recommendation": {
+            "url": "http://recommendation-service:3011"
+        }
+    }
+}

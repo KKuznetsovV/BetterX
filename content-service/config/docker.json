@@ -1,0 +1,31 @@
+{
+    "app": {
+        "name": "betterx-content-service docker"
+    },
+    "db": {
+        "host": "database"
+    },
+    "io": {
+        "url": "http://host.docker.internal:3004"
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@host.docker.internal:5672"
+    },
+    "services": {
+        "identity": {
+            "url": "http://host.docker.internal:3010"
+        },
+        "ai": {
+            "url": "http://host.docker.internal:3005"
+        },
+        "media": {
+            "url": "http://host.docker.internal:3006"
+        },
+        "engagement": {
+            "url": "http://host.docker.internal:3008"
+        },
+        "recommendation": {
+            "url": "http://host.docker.internal:3011"
+        }
+    }
+}

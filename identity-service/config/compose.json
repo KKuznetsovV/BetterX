@@ -1,0 +1,25 @@
+{
+    "app": {
+        "name": "betterx-identity-service compose"
+    },
+    "db": {
+        "host": "database"
+    },
+    "io": {
+        "url": "http://io:3004"
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@rabbitmq:5672"
+    },
+    "aws": {
+        "bucket": "com.betterx.compose",
+        "publicEndpoint": "http://localhost:9100",
+        "connection": {
+            "endpoint": "http://minio:9000",
+            "credentials": {
+                "accessKeyId": "minioadmin",
+                "secretAccessKey": "minioadmin"
+            }
+        }
+    }
+}

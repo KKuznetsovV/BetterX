@@ -1,0 +1,9 @@
+{
+    "app": {
+        "port": "BETTERX_CONTENT_PORT"
+    },
+    "db": {
+        "host": "BETTERX_DB_HOST",
+        "password": "BETTERX_DB_PASSWORD"
+    }
+}

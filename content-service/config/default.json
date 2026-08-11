@@ -1,0 +1,40 @@
+{
+    "app": {
+        "port": 3009,
+        "name": "BetterX Content Service Dev",
+        "encryptionKey": "MysecretKey"
+    },
+    "db": {
+        "host": "localhost",
+        "port": 3306,
+        "username": "root",
+        "password": "",
+        "database": "betterx_content",
+        "dialectOptions": {
+            "charset": "utf8mb4"
+        }
+    },
+    "io": {
+        "url": "http://localhost:3004"
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@localhost:5672"
+    },
+    "services": {
+        "identity": {
+            "url": "http://localhost:3010"
+        },
+        "ai": {
+            "url": "http://localhost:3005"
+        },
+        "media": {
+            "url": "http://localhost:3006"
+        },
+        "engagement": {
+            "url": "http://localhost:3008"
+        },
+        "recommendation": {
+            "url": "http://localhost:3011"
+        }
+    }
+}

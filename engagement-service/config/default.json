@@ -1,0 +1,20 @@
+{
+    "app": {
+        "port": 3008,
+        "name": "BetterX Engagement Service Dev",
+        "encryptionKey": "MysecretKey"
+    },
+    "db": {
+        "host": "localhost",
+        "port": 3306,
+        "username": "root",
+        "password": "",
+        "database": "betterx_likes",
+        "dialectOptions": {
+            "charset": "utf8mb4"
+        }
+    },
+    "io": {
+        "url": "http://localhost:3004"
+    }
+}

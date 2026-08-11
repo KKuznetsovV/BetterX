@@ -1,0 +1,14 @@
+{
+    "app": {
+        "name": "BetterX MCP Server Dev",
+        "encryptionKey": "MysecretKey"
+    },
+    "io": { "url": "http://localhost:3004" },
+    "mcp": { "userId": "" },
+    "services": {
+        "ai": { "url": "http://localhost:3005" },
+        "media": { "url": "http://localhost:3006" },
+        "content": { "url": "http://localhost:3009" },
+        "identity": { "url": "http://localhost:3010" }
+    }
+}

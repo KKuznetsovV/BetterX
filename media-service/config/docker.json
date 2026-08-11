@@ -1,0 +1,11 @@
+{
+    "app": {
+        "name": "betterx-media-service docker"
+    },
+    "aws": {
+        "publicEndpoint": "http://localhost:9000",
+        "connection": {
+            "endpoint": "http://minio:9000"
+        }
+    }
+}

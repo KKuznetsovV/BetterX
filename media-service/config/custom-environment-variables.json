@@ -1,0 +1,13 @@
+{
+    "app": {
+        "port": "BETTERX_MEDIA_PORT"
+    },
+    "aws": {
+        "connection": {
+            "credentials": {
+                "accessKeyId": "AWS_ACCESS_KEY_ID",
+                "secretAccessKey": "AWS_SECRET_ACCESS_KEY"
+            }
+        }
+    }
+}

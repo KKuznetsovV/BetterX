@@ -1,0 +1,17 @@
+{
+  "name": "socket-enums-kkuznetsovv-123",
+  "version": "1.0.4",
+  "description": "",
+  "main": "./dist/socket-enums.js",
+  "types": "./dist/socket-enums.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}

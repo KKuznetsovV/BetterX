@@ -1,0 +1,19 @@
+{
+    "app": {
+        "name": "betterx-notification-service docker"
+    },
+    "db": {
+        "host": "database"
+    },
+    "io": {
+        "url": "http://host.docker.internal:3004"
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@host.docker.internal:5672"
+    },
+    "services": {
+        "identity": {
+            "url": "http://host.docker.internal:3010"
+        }
+    }
+}

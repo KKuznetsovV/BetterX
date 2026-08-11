@@ -1,0 +1,177 @@
+.edit-profile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.edit-profile-modal {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.edit-profile-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--text);
+}
+
+.edit-profile-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.edit-profile-label {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.edit-profile-input {
+    padding: 8px 12px;
+    border: 1.5px solid var(--border, #e2d6c2);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: var(--surface-input);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.edit-profile-input:focus {
+    border-color: var(--primary, #d4a842);
+}
+
+.edit-profile-avatar-preview {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border, #e2d6c2);
+    margin-top: 4px;
+}
+
+.edit-profile-error {
+    color: var(--color-error);
+    font-size: 0.82rem;
+    min-height: 1em;
+}
+
+.edit-profile-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.edit-profile-save-button {
+    flex: 1;
+    padding: 9px;
+    background: var(--primary, #d4a842);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.edit-profile-save-button:hover {
+    background: var(--primary-dark, #b8922e);
+}
+
+.edit-profile-cancel-button {
+    flex: 1;
+    padding: 9px;
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--border, #e2d6c2);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.edit-profile-cancel-button:hover {
+    background: var(--surface-2);
+}
+
+.edit-profile-divider {
+    border: none;
+    border-top: 1.5px solid var(--border, #e2d6c2);
+    margin: 4px 0;
+}
+
+.edit-profile-delete-button {
+    padding: 9px;
+    background: transparent;
+    color: #c0392b;
+    border: 1.5px solid #c0392b;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    width: 100%;
+}
+
+.edit-profile-delete-button:hover {
+    background: #c0392b;
+    color: #fff;
+}
+
+.edit-profile-upload-button {
+    padding: 5px 12px;
+    background: color-mix(in srgb, var(--brand-2) 12%, var(--surface));
+    color: var(--brand-2);
+    border: 1.5px solid var(--brand-2);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.edit-profile-upload-button:hover {
+    background: color-mix(in srgb, var(--brand-2) 25%, var(--surface));
+}
+
+.edit-profile-clear-button {
+    padding: 5px 10px;
+    background: #fde8e8;
+    color: #b91c1c;
+    border: 1.5px solid #f9c5c5;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.edit-profile-clear-button:hover {
+    background: #fecaca;
+}
+
+.edit-profile-filename {
+    display: inline-block;
+    padding: 6px 10px;
+    background: color-mix(in srgb, var(--brand-2) 8%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--brand-2) 30%, transparent);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    color: var(--brand-2);
+    font-style: italic;
+    word-break: break-all;
+}

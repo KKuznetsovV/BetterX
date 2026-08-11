@@ -1,0 +1,11 @@
+{
+    "app": { "name": "betterx-recommendation-service docker" },
+    "pgvector": { "host": "host.docker.internal" },
+    "mq": {
+        "url": "amqp://betterx:betterx@host.docker.internal:5672"
+    },
+    "services": {
+        "identity": { "url": "http://host.docker.internal:3010" },
+        "content": { "url": "http://host.docker.internal:3009" }
+    }
+}

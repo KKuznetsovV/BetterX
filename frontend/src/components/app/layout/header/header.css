@@ -1,0 +1,251 @@
+.header {
+    padding: 14px 18px;
+    background: linear-gradient(120deg, var(--surface) 0%, var(--surface-2) 100%);
+    border-radius: inherit;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: background 0.25s ease;
+}
+
+.header-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 14px;
+}
+
+.header-brand {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+}
+
+.header-logo-btn:hover {
+    opacity: 0.8;
+}
+
+.header-logo {
+    height: 34px;
+    width: auto;
+    display: block;
+}
+
+.header-nav {
+    justify-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header .nav-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.header .nav-link:hover {
+    color: var(--brand-2);
+    background: rgba(33, 114, 111, 0.08);
+}
+
+.header .nav-link.active {
+    color: #1e3a1e;
+    background: #b8f5a2;
+    font-weight: 700;
+}
+
+.header .nav-divider {
+    color: var(--muted);
+    user-select: none;
+}
+
+.header-user {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    line-height: 1.4;
+}
+
+.header-welcome {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.header-welcome:hover {
+    color: var(--brand);
+    text-decoration: underline;
+}
+
+.logout-button {
+    background: var(--text, #2f2a24);
+    border: none;
+    color: var(--bg, #f7f5ef);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0.3rem 0.85rem;
+    border-radius: 20px;
+    transition: background 0.18s;
+    white-space: nowrap;
+}
+
+.logout-button:hover {
+    background: var(--muted);
+}
+
+.header-theme-toggle {
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.header-theme-toggle:hover {
+    background: var(--surface-2);
+    border-color: var(--brand-2);
+}
+
+@media (max-width: 620px) {
+    .header-row {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .header-brand,
+    .header-nav,
+    .header-user {
+        justify-self: center;
+    }
+
+    .header-user {
+        text-align: center;
+    }
+}
+
+/* ── Bell icon ─────────────────────────────────────────── */
+.header-bell {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 1.15rem;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 50%;
+    line-height: 1;
+    transition: background 0.2s ease;
+    visibility: hidden;
+}
+
+.header-bell--active {
+    visibility: visible;
+    animation: bell-shake 0.55s ease-in-out;
+}
+
+.header-bell:hover {
+    background: rgba(33, 114, 111, 0.1);
+}
+
+.header-bell-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background: var(--brand);
+    border-radius: 50%;
+    border: 1.5px solid var(--surface);
+}
+
+@keyframes bell-shake {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(-22deg); }
+    40% { transform: rotate(22deg); }
+    60% { transform: rotate(-14deg); }
+    80% { transform: rotate(10deg); }
+}
+
+/* ── Feed stale banner ─────────────────────────────────── */
+.header-feed-banner {
+    margin-top: 10px;
+    padding: 9px 14px;
+    background: linear-gradient(90deg, #fff3cd 0%, #fde9c7 100%);
+    border: 1px solid #f5c16e;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    color: #7a5200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    animation: banner-slide-down 0.3s ease;
+}
+
+html[data-theme="dark"] .header-feed-banner {
+    background: linear-gradient(90deg, #2d2507 0%, #3a2010 100%);
+    border-color: #6b5020;
+    color: #d4b060;
+}
+
+@keyframes banner-slide-down {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.header-feed-banner-btn {
+    flex-shrink: 0;
+    background: #f5c16e;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 14px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #7a5200;
+    transition: background 0.2s ease;
+}
+
+html[data-theme="dark"] .header-feed-banner-btn {
+    background: #6b5020;
+    color: #e8c878;
+}
+
+html[data-theme="dark"] .header-feed-banner-btn:hover {
+    background: #8a6828;
+}
+
+.header-feed-banner-btn:hover {
+    background: #f0aa3e;
+}

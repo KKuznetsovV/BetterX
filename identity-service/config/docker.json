@@ -1,0 +1,21 @@
+{
+    "app": {
+        "name": "betterx-identity-service docker"
+    },
+    "db": {
+        "host": "database",
+        "port": 3306
+    },
+    "io": {
+        "url": "http://host.docker.internal:3004"
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@host.docker.internal:5672"
+    },
+    "aws": {
+        "publicEndpoint": "http://localhost:9000",
+        "connection": {
+            "endpoint": "http://minio:9000"
+        }
+    }
+}

@@ -1,0 +1,93 @@
+.follow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    transition: box-shadow 0.15s ease, background 0.15s;
+}
+
+.follow:hover {
+    box-shadow: 0 4px 12px rgba(33, 114, 111, 0.1);
+    background: var(--surface-2);
+}
+
+.follow-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.follow-meta {
+    min-width: 0;
+}
+
+.follow-profile-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+}
+
+.follow-name {
+    font-weight: 700;
+    color: var(--text);
+}
+
+.follow-username {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.follow-spinner {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.follow-button,
+.unfollow-button {
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+    white-space: nowrap;
+}
+
+.follow-button {
+    background: var(--brand-2, #21726f);
+    color: #fff;
+    border: 2px solid var(--brand-2, #21726f);
+}
+
+.follow-button:hover {
+    background: #185e5b;
+    border-color: #185e5b;
+}
+
+.unfollow-button {
+    background: transparent;
+    color: var(--brand, #bd4f2a);
+    border: 2px solid var(--brand, #bd4f2a);
+}
+
+.unfollow-button:hover {
+    background: var(--brand, #bd4f2a);
+    color: #fff;
+}

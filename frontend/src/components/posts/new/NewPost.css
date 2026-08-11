@@ -1,0 +1,291 @@
+.new-post {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-2);
+}
+
+.new-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.new-post-title {
+    margin: 0 0 0.5rem;
+}
+
+.new-post-guidelines {
+    margin: -0.15rem 0 0.35rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.new-post-guidelines-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--brand-2);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+    cursor: pointer;
+}
+
+.new-post-guidelines-link:hover {
+    color: color-mix(in srgb, var(--brand-2) 84%, #000);
+}
+
+.new-post-input,
+.new-post-textarea {
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 1rem;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.new-post-submit {
+    align-self: flex-start;
+    padding: 0.4rem 1rem;
+    background: var(--brand-2);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.new-post-submit:hover {
+    background: color-mix(in srgb, var(--brand-2) 85%, #000);
+}
+
+.error {
+    color: red;
+    font-size: 0.85rem;
+}
+
+.new-post-image-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.new-post-image-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.new-post-image-action-btn {
+    padding: 0.25rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: background 0.13s, border-color 0.13s, color 0.13s;
+}
+
+.new-post-image-action-btn.active,
+.new-post-image-action-btn:hover {
+    background: color-mix(in srgb, var(--brand-2) 12%, var(--surface));
+    border-color: var(--brand-2);
+    color: var(--brand-2);
+}
+
+.new-post-file-input {
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.new-post-image-preview {
+    max-width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    margin-top: 4px;
+}
+
+.new-post-improve-styles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.new-post-improve-style-btn {
+    padding: 0.2rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+
+.new-post-improve-style-btn:hover {
+    border-color: var(--brand-2);
+    color: var(--brand-2);
+}
+
+.new-post-improve-style-btn--active {
+    background: color-mix(in srgb, var(--brand-2) 12%, var(--surface));
+    border-color: var(--brand-2);
+    color: var(--brand-2);
+}
+
+.new-post-improve-btn {
+    align-self: flex-start;
+    padding: 0.3rem 0.9rem;
+    background: color-mix(in srgb, var(--brand-2) 10%, var(--surface));
+    color: var(--brand-2);
+    border: 1.5px solid var(--brand-2);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.new-post-improve-btn:hover {
+    background: color-mix(in srgb, var(--brand-2) 20%, var(--surface));
+}
+
+.new-post-improve-picker {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    background: var(--surface);
+}
+
+.new-post-improve-option {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.6rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+}
+
+.new-post-improve-option--ai {
+    border-color: var(--brand-2);
+    background: color-mix(in srgb, var(--brand-2) 5%, var(--surface));
+}
+
+.new-post-improve-option-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.new-post-improve-option--ai .new-post-improve-option-label {
+    color: var(--brand-2);
+}
+
+.new-post-improve-option-text {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text);
+    flex: 1;
+    white-space: pre-wrap;
+}
+
+.new-post-improve-select-btn {
+    align-self: flex-start;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface-2);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.new-post-improve-select-btn--ai {
+    background: var(--brand-2);
+    color: #fff;
+    border-color: var(--brand-2);
+}
+
+.new-post-improve-select-btn--ai:hover {
+    background: color-mix(in srgb, var(--brand-2) 85%, #000);
+}
+
+.new-post-generate-image-btn {
+    padding: 0.25rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1.5px solid var(--brand-1, #7c3aed);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--brand-1, #7c3aed) 10%, var(--surface));
+    color: var(--brand-1, #7c3aed);
+    cursor: pointer;
+    transition: background 0.13s, border-color 0.13s;
+}
+
+.new-post-generate-image-btn:hover {
+    background: color-mix(in srgb, var(--brand-1, #7c3aed) 20%, var(--surface));
+}
+
+.new-post-generated-image {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border: 1.5px solid var(--brand-1, #7c3aed);
+    border-radius: 8px;
+    padding: 0.75rem;
+    background: color-mix(in srgb, var(--brand-1, #7c3aed) 5%, var(--surface));
+}
+
+.new-post-generated-image-prompt {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.new-post-generated-image-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.new-post-generate-use-btn {
+    padding: 0.25rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    background: var(--brand-1, #7c3aed);
+    color: #fff;
+    cursor: pointer;
+}
+
+.new-post-generate-use-btn:hover {
+    background: color-mix(in srgb, var(--brand-1, #7c3aed) 85%, #000);
+}
+
+.new-post-generate-discard-btn {
+    padding: 0.25rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface-2);
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.new-post-generate-discard-btn:hover {
+    background: var(--surface);
+}
+

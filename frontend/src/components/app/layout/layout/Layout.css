@@ -1,0 +1,77 @@
+.layout {
+    min-height: calc(100vh - 36px);
+    display: grid;
+    gap: 14px;
+    grid-template-columns: minmax(210px, 260px) 1fr;
+    grid-template-rows: auto 1fr auto;
+}
+
+.layout > header,
+.layout > footer,
+.layout > main {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.layout > header {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.layout > #follows {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    display: grid;
+    gap: 14px;
+}
+
+.layout > #follows > #following,
+.layout > #follows > #followers {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    min-height: 240px;
+}
+
+.layout > main {
+    grid-column: 2;
+    grid-row: 2;
+    overflow: auto;
+    min-height: 0;
+}
+
+.layout > footer {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+}
+
+@media (max-width: 900px) {
+    .layout {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .layout > header,
+    .layout > #follows,
+    .layout > main,
+    .layout > footer {
+        grid-column: 1;
+        grid-row: auto;
+        min-height: auto;
+    }
+
+    .layout > #follows > #following,
+    .layout > #follows > #followers {
+        min-height: auto;
+    }
+}
+
+

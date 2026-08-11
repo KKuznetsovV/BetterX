@@ -1,0 +1,19 @@
+{
+    "app": {
+        "name": "betterx-notification-service production"
+    },
+    "db": {
+        "host": "database"
+    },
+    "io": {
+        "url": "http://io:3004"
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@rabbitmq:5672"
+    },
+    "services": {
+        "identity": {
+            "url": "http://identity-service:3010"
+        }
+    }
+}

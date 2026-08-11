@@ -1,0 +1,196 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px;
+}
+
+.profile .post + .post {
+    border-top: 4px solid var(--border);
+}
+
+.profile-follows-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+    border-top: 2px solid var(--border);
+    padding-top: 16px;
+}
+
+.profile-follows-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-follows-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-follows-badge {
+    background: var(--brand-2);
+    color: #fff;
+    border-radius: 999px;
+    padding: 1px 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.profile-follows-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0 6px;
+    border-bottom: 2px solid var(--border, #e2d6c2);
+    margin-bottom: 4px;
+}
+
+.profile-header-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.profile-header-avatar-btn {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.profile-header-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.profile-header-username {
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.profile-empty {
+    color: var(--muted);
+    text-align: center;
+    padding: 32px 0;
+}
+
+.profile-follow-button,
+.profile-unfollow-button {
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.1s;
+    white-space: nowrap;
+}
+
+.profile-follow-button {
+    background: var(--brand-2, #21726f);
+    color: #fff;
+    border: 2px solid var(--brand-2, #21726f);
+}
+
+.profile-follow-button:hover {
+    background: #185e5b;
+    border-color: #185e5b;
+    transform: scale(1.04);
+}
+
+.profile-unfollow-button {
+    background: transparent;
+    color: var(--brand, #bd4f2a);
+    border: 2px solid var(--brand, #bd4f2a);
+}
+
+.profile-unfollow-button:hover {
+    background: var(--brand, #bd4f2a);
+    color: #fff;
+    transform: scale(1.04);
+}
+
+.profile-own-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0 6px;
+    border-bottom: 2px solid var(--border, #e2d6c2);
+    margin-bottom: 4px;
+}
+
+.profile-edit-button {
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--border, #e2d6c2);
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+}
+
+.profile-edit-button:hover {
+    background: var(--surface-2);
+    border-color: var(--border);
+}
+
+.profile-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.profile-lightbox-img {
+    max-width: min(92vw, 1100px);
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 22px 80px rgba(0, 0, 0, 0.48);
+    cursor: zoom-out;
+}
+
+.profile-lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.profile-lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.24);
+}

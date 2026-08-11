@@ -1,0 +1,11 @@
+{
+    "app": {
+        "name": "betterx-engagement-service docker"
+    },
+    "db": {
+        "host": "database"
+    },
+    "io": {
+        "url": "http://host.docker.internal:3004"
+    }
+}

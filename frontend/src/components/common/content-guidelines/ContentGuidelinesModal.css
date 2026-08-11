@@ -1,0 +1,71 @@
+.content-guidelines-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background: rgba(0, 0, 0, 0.42);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.content-guidelines-modal {
+    width: min(760px, 96vw);
+    max-height: 85vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1rem 1.1rem;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+    color: var(--text);
+    position: relative;
+}
+
+.content-guidelines-close {
+    position: sticky;
+    top: 0.15rem;
+    float: right;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.content-guidelines-modal h2 {
+    margin: 0 0 0.65rem;
+    color: var(--brand-2);
+}
+
+.content-guidelines-modal h3 {
+    margin: 1rem 0 0.35rem;
+    font-size: 0.98rem;
+}
+
+.content-guidelines-modal p {
+    margin: 0 0 0.6rem;
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.content-guidelines-modal ul {
+    margin: 0 0 0.7rem;
+    padding-left: 1.15rem;
+}
+
+.content-guidelines-modal li + li {
+    margin-top: 0.3rem;
+}
+
+.content-guidelines-modal blockquote {
+    margin: 0.75rem 0 0;
+    padding: 0.6rem 0.75rem;
+    border-left: 3px solid var(--brand-2);
+    background: color-mix(in srgb, var(--brand-2) 7%, var(--surface));
+    color: var(--text);
+    border-radius: 6px;
+}

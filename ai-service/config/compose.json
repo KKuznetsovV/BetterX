@@ -1,0 +1,16 @@
+{
+    "app": {
+        "name": "betterx-ai-service compose"
+    },
+    "aws": {
+        "bucket": "com.betterx.compose",
+        "publicEndpoint": "http://localhost:9100",
+        "connection": {
+            "endpoint": "http://minio:9000",
+            "credentials": {
+                "accessKeyId": "minioadmin",
+                "secretAccessKey": "minioadmin"
+            }
+        }
+    }
+}

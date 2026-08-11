@@ -1,0 +1,28 @@
+{
+    "app": {
+        "port": 3007,
+        "name": "BetterX Notification Service Dev",
+        "encryptionKey": "MysecretKey"
+    },
+    "db": {
+        "host": "localhost",
+        "port": 3306,
+        "username": "root",
+        "password": "",
+        "database": "betterx_notifications",
+        "dialectOptions": {
+            "charset": "utf8mb4"
+        }
+    },
+    "io": {
+        "url": "http://localhost:3004"
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@localhost:5672"
+    },
+    "services": {
+        "identity": {
+            "url": "http://localhost:3010"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "app": { "name": "betterx-mcp-server compose" },
+    "io": { "url": "http://io:3004" },
+    "services": {
+        "ai": { "url": "http://ai-service:3005" },
+        "media": { "url": "http://media-service:3006" },
+        "content": { "url": "http://content-service:3009" },
+        "identity": { "url": "http://identity-service:3010" }
+    }
+}

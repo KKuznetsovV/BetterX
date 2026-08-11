@@ -1,0 +1,12 @@
+.spinner-button-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: inherit;
+    color: inherit;
+}
+
+.spinner-button-img {
+    height: 20px;
+    width: 20px;
+}

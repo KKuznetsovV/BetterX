@@ -1,0 +1,36 @@
+{
+    "app": {
+        "port": 3010,
+        "name": "BetterX Identity Service Dev",
+        "encryptionKey": "MysecretKey"
+    },
+    "db": {
+        "host": "localhost",
+        "port": 3306,
+        "username": "root",
+        "password": "",
+        "database": "betterx_identity",
+        "dialectOptions": {
+            "charset": "utf8mb4"
+        }
+    },
+    "io": {
+        "url": "http://localhost:3004"
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@localhost:5672"
+    },
+    "aws": {
+        "bucket": "com.betterx.dev",
+        "avatarsBucket": "com.betterx.dev.avatars",
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "endpoint": "http://localhost:9000",
+            "credentials": {
+                "accessKeyId": "",
+                "secretAccessKey": ""
+            }
+        }
+    }
+}

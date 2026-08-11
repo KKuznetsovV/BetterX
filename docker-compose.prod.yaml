@@ -1,0 +1,275 @@
+services: 
+  database:
+    container_name: betterx-db-compose
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_DATABASE=college
+      - MYSQL_TCP_PORT=3306
+    image: kuzmass/betterx-db:20.0
+    restart: unless-stopped
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci", "--skip-name-resolve"]
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  rabbitmq:
+    container_name: betterx-rabbitmq-compose
+    image: rabbitmq:3.13-management-alpine
+    restart: unless-stopped
+    environment:
+      - RABBITMQ_DEFAULT_USER=${BETTERX_RABBITMQ_USER:-betterx}
+      - RABBITMQ_DEFAULT_PASS=${BETTERX_RABBITMQ_PASSWORD:-betterx}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  io:
+    container_name: betterx-io-compose
+    image: kuzmass/betterx-io:20.0
+    restart: unless-stopped
+    ports:
+      - "3004:3004"
+
+  pgvector:
+    container_name: pgvector-compose
+    image: kuzmass/betterx-pgvector:20.0
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${BETTERX_PGVECTOR_PASSWORD:-postgres}
+      - POSTGRES_DB=betterx_recommendations
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  minio:
+    container_name: minio-compose
+    image: minio/minio
+    restart: unless-stopped
+    ports:
+      - "9100:9000"
+      - "9101:9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+      - MINIO_API_CORS_ALLOW_ORIGIN=*
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  ai-service:
+    container_name: betterx-ai-service-compose
+    image: kuzmass/betterx-ai-service:20.0
+    restart: unless-stopped
+    command: ["npm", "run", "production"]
+    environment:
+      - NODE_ENV=production
+      - BETTERX_AI_PORT=${BETTERX_AI_PORT:-3005}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-minioadmin}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-minioadmin}
+    ports:
+      - "3005:3005"
+    depends_on:
+      minio:
+        condition: service_healthy
+
+  media-service:
+    container_name: betterx-media-service-compose
+    image: kuzmass/betterx-media-service:20.0
+    restart: unless-stopped
+    command: ["npm", "run", "production"]
+    environment:
+      - NODE_ENV=production
+      - BETTERX_MEDIA_PORT=${BETTERX_MEDIA_PORT:-3006}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-minioadmin}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-minioadmin}
+    ports:
+      - "3006:3006"
+    depends_on:
+      minio:
+        condition: service_healthy
+
+  notification-service:
+    container_name: betterx-notification-service-compose
+    image: kuzmass/betterx-notification-service:20.0
+    restart: unless-stopped
+    command: ["npm", "run", "production"]
+    environment:
+      - NODE_ENV=production
+      - BETTERX_NOTIFICATION_PORT=${BETTERX_NOTIFICATION_PORT:-3007}
+      - BETTERX_DB_HOST=${BETTERX_DB_HOST:-database}
+      - BETTERX_DB_PASSWORD=${BETTERX_DB_PASSWORD}
+    ports:
+      - "3007:3007"
+    depends_on:
+      database:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  engagement-service:
+    container_name: betterx-engagement-service-compose
+    image: kuzmass/betterx-engagement-service:20.0
+    restart: unless-stopped
+    command: ["npm", "run", "production"]
+    environment:
+      - NODE_ENV=production
+      - BETTERX_ENGAGEMENT_PORT=${BETTERX_ENGAGEMENT_PORT:-3008}
+      - BETTERX_DB_HOST=${BETTERX_DB_HOST:-database}
+      - BETTERX_DB_PASSWORD=${BETTERX_DB_PASSWORD}
+    ports:
+      - "3008:3008"
+    depends_on:
+      database:
+        condition: service_healthy
+
+  content-service:
+    container_name: betterx-content-service-compose
+    image: kuzmass/betterx-content-service:20.0
+    restart: unless-stopped
+    command: ["npm", "run", "production"]
+    environment:
+      - NODE_ENV=production
+      - BETTERX_CONTENT_PORT=${BETTERX_CONTENT_PORT:-3009}
+      - BETTERX_DB_HOST=${BETTERX_DB_HOST:-database}
+      - BETTERX_DB_PASSWORD=${BETTERX_DB_PASSWORD}
+    ports:
+      - "3009:3009"
+    depends_on:
+      database:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      identity-service:
+        condition: service_started
+      ai-service:
+        condition: service_started
+      media-service:
+        condition: service_started
+      notification-service:
+        condition: service_started
+      engagement-service:
+        condition: service_started
+      recommendation-service:
+        condition: service_started
+
+  identity-service:
+    container_name: betterx-identity-service-compose
+    image: kuzmass/betterx-identity-service:20.0
+    restart: unless-stopped
+    command: ["npm", "run", "production"]
+    environment:
+      - NODE_ENV=production
+      - BETTERX_IDENTITY_PORT=${BETTERX_IDENTITY_PORT:-3010}
+      - BETTERX_DB_HOST=${BETTERX_DB_HOST:-database}
+      - BETTERX_DB_PASSWORD=${BETTERX_DB_PASSWORD}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-minioadmin}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-minioadmin}
+    ports:
+      - "3010:3010"
+    depends_on:
+      database:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      notification-service:
+        condition: service_started
+
+  recommendation-service:
+    container_name: betterx-recommendation-service-compose
+    image: kuzmass/betterx-recommendation-service:20.0
+    restart: unless-stopped
+    command: ["npm", "run", "production"]
+    environment:
+      - NODE_ENV=production
+      - BETTERX_RECOMMENDATION_PORT=${BETTERX_RECOMMENDATION_PORT:-3011}
+      - BETTERX_PGVECTOR_PASSWORD=${BETTERX_PGVECTOR_PASSWORD:-postgres}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    ports:
+      - "3011:3011"
+    depends_on:
+      pgvector:
+        condition: service_healthy
+      identity-service:
+        condition: service_started
+      rabbitmq:
+        condition: service_healthy
+
+  mcp-server:
+    container_name: betterx-mcp-server-compose
+    image: kuzmass/betterx-mcp-server:20.0
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - BETTERX_MCP_USER_ID=${BETTERX_MCP_USER_ID}
+    depends_on:
+      database:
+        condition: service_healthy
+      ai-service:
+        condition: service_started
+      media-service:
+        condition: service_started
+      notification-service:
+        condition: service_started
+      engagement-service:
+        condition: service_started
+      content-service:
+        condition: service_started
+      identity-service:
+        condition: service_started
+
+  frontend:
+    container_name: betterx-front-compose
+    image: kuzmass/betterx-frontend:20.0
+    restart: unless-stopped
+    ports:
+      - 80:80
+    depends_on:
+      ai-service:
+        condition: service_started
+      media-service:
+        condition: service_started
+      notification-service:
+        condition: service_started
+      engagement-service:
+        condition: service_started
+      content-service:
+        condition: service_started
+      identity-service:
+        condition: service_started
+      recommendation-service:
+        condition: service_started
+
+volumes:
+  db_data:
+  minio_data:
+  pgvector_data:
+  rabbitmq_data:
+

@@ -1,0 +1,143 @@
+.new-comment-improve-styles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+}
+
+.new-comment-improve-style-btn {
+    padding: 0.15rem 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+
+.new-comment-improve-style-btn:hover {
+    border-color: var(--brand-2);
+    color: var(--brand-2);
+}
+
+.new-comment-improve-style-btn--active {
+    background: color-mix(in srgb, var(--brand-2) 12%, var(--surface));
+    border-color: var(--brand-2);
+    color: var(--brand-2);
+}
+
+.new-comment-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    align-items: center;
+}
+
+.new-comment-input {
+    flex: 1;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.new-comment-submit {
+    padding: 0.4rem 0.8rem;
+    background: var(--brand-2);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.new-comment-submit:hover {
+    background: color-mix(in srgb, var(--brand-2) 85%, #000);
+}
+
+.new-comment-improve-btn {
+    padding: 0.4rem 0.8rem;
+    background: color-mix(in srgb, var(--brand-2) 10%, var(--surface));
+    color: var(--brand-2);
+    border: 1.5px solid var(--brand-2);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.new-comment-improve-btn:hover {
+    background: color-mix(in srgb, var(--brand-2) 20%, var(--surface));
+}
+
+.new-comment-improve-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem;
+    background: var(--surface);
+}
+
+.new-comment-improve-option {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+}
+
+.new-comment-improve-option--ai {
+    border-color: var(--brand-2);
+    background: color-mix(in srgb, var(--brand-2) 5%, var(--surface));
+}
+
+.new-comment-improve-option-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.new-comment-improve-option--ai .new-comment-improve-option-label {
+    color: var(--brand-2);
+}
+
+.new-comment-improve-option-text {
+    font-size: 0.88rem;
+    color: var(--text);
+    flex: 1;
+}
+
+.new-comment-improve-select-btn {
+    padding: 0.2rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface-2);
+    color: var(--text);
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.new-comment-improve-select-btn--ai {
+    background: var(--brand-2);
+    color: #fff;
+    border-color: var(--brand-2);
+}
+
+.new-comment-improve-select-btn--ai:hover {
+    background: color-mix(in srgb, var(--brand-2) 85%, #000);
+}

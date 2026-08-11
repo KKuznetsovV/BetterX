@@ -1,0 +1,10 @@
+{
+    "app": { "name": "betterx-mcp-server docker" },
+    "io": { "url": "http://host.docker.internal:3004" },
+    "services": {
+        "ai": { "url": "http://host.docker.internal:3005" },
+        "media": { "url": "http://host.docker.internal:3006" },
+        "content": { "url": "http://host.docker.internal:3009" },
+        "identity": { "url": "http://host.docker.internal:3010" }
+    }
+}

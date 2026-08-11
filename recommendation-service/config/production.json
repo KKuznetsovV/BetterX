@@ -1,0 +1,11 @@
+{
+    "app": { "name": "betterx-recommendation-service production" },
+    "pgvector": { "host": "pgvector" },
+    "mq": {
+        "url": "amqp://betterx:betterx@rabbitmq:5672"
+    },
+    "services": {
+        "identity": { "url": "http://identity-service:3010" },
+        "content": { "url": "http://content-service:3009" }
+    }
+}

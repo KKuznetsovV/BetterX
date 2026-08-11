@@ -1,0 +1,89 @@
+.followers {
+	padding: 16px;
+	height: 100%;
+	background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+	border-radius: inherit;
+}
+
+.followers-heading {
+        background: none;
+        border: none;
+        border-bottom: 2px solid rgba(189, 79, 42, 0.15);
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        padding: 0 0 10px 0;
+        transition: opacity 0.15s;
+}
+
+.followers-heading:hover {
+        opacity: 0.72;
+}
+
+.followers-heading-icon {
+	font-size: 1.1rem;
+	line-height: 1;
+}
+
+.followers-heading h2 {
+	font-size: 0.9rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--brand);
+	margin: 0;
+	font-weight: 800;
+}
+
+.followers-badge {
+	margin-left: auto;
+	background: rgba(189, 79, 42, 0.1);
+	color: var(--brand);
+	font-size: 0.72rem;
+	font-weight: 800;
+	padding: 2px 8px;
+	border-radius: 20px;
+	min-width: 22px;
+	text-align: center;
+}
+
+.followers-list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.followers-empty {
+	text-align: center;
+	padding: 24px 0;
+	color: var(--muted);
+	font-size: 0.85rem;
+	opacity: 0.7;
+}
+
+.followers-error {
+	color: var(--brand);
+	font-size: 0.85rem;
+	padding: 10px 0;
+	font-weight: 600;
+}
+.followers-see-all {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--brand);
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 4px 0;
+        text-align: left;
+        opacity: 0.75;
+        letter-spacing: 0.02em;
+}
+
+.followers-see-all:hover {
+        opacity: 1;
+        text-decoration: underline;
+}

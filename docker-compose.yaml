@@ -1,0 +1,247 @@
+services: 
+  database:
+    container_name: betterx-db-compose
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_DATABASE=college
+      - MYSQL_TCP_PORT=3306
+    build: ./db
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+  minio:
+    container_name: minio-compose
+    image: minio/minio
+    ports:
+      - "9100:9000"
+      - "9101:9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+      - MINIO_API_CORS_ALLOW_ORIGIN=*
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  pgvector:
+    container_name: pgvector-compose
+    build: ./pgvector
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=betterx_recommendations
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  rabbitmq:
+    container_name: betterx-rabbitmq-compose
+    image: rabbitmq:3.13-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=${BETTERX_RABBITMQ_USER:-betterx}
+      - RABBITMQ_DEFAULT_PASS=${BETTERX_RABBITMQ_PASSWORD:-betterx}
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  io:
+    container_name: betterx-io-compose
+    ports:
+      - "3004:3004"
+    build: ./io
+
+  ai-service:
+    container_name: betterx-ai-service-compose
+    build:
+      context: .
+      dockerfile: ai-service/Dockerfile
+    ports:
+      - "3005:3005"
+    env_file:
+      - ./.env
+    depends_on:
+      minio:
+        condition: service_healthy
+
+  media-service:
+    container_name: betterx-media-service-compose
+    build:
+      context: .
+      dockerfile: media-service/Dockerfile
+    ports:
+      - "3006:3006"
+    env_file:
+      - ./.env
+    depends_on:
+      minio:
+        condition: service_healthy
+
+  notification-service:
+    container_name: betterx-notification-service-compose
+    build:
+      context: .
+      dockerfile: notification-service/Dockerfile
+    ports:
+      - "3007:3007"
+    env_file:
+      - ./.env
+    depends_on:
+      database:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  engagement-service:
+    container_name: betterx-engagement-service-compose
+    build:
+      context: .
+      dockerfile: engagement-service/Dockerfile
+    ports:
+      - "3008:3008"
+    env_file:
+      - ./.env
+    depends_on:
+      database:
+        condition: service_healthy
+
+  content-service:
+    container_name: betterx-content-service-compose
+    build:
+      context: .
+      dockerfile: content-service/Dockerfile
+    ports:
+      - "3009:3009"
+    env_file:
+      - ./.env
+    depends_on:
+      database:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      identity-service:
+        condition: service_started
+      ai-service:
+        condition: service_started
+      media-service:
+        condition: service_started
+      notification-service:
+        condition: service_started
+      engagement-service:
+        condition: service_started
+      recommendation-service:
+        condition: service_started
+
+  identity-service:
+    container_name: betterx-identity-service-compose
+    build:
+      context: .
+      dockerfile: identity-service/Dockerfile
+    ports:
+      - "3010:3010"
+    env_file:
+      - ./.env
+    depends_on:
+      database:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      notification-service:
+        condition: service_started
+
+  recommendation-service:
+    container_name: betterx-recommendation-service-compose
+    build:
+      context: .
+      dockerfile: recommendation-service/Dockerfile
+    ports:
+      - "3011:3011"
+    env_file:
+      - ./.env
+    depends_on:
+      pgvector:
+        condition: service_healthy
+      identity-service:
+        condition: service_started
+      rabbitmq:
+        condition: service_healthy
+
+  mcp-server:
+    container_name: betterx-mcp-server-compose
+    build:
+      context: .
+      dockerfile: mcp-server/Dockerfile
+    environment:
+      - NODE_ENV=compose
+    depends_on:
+      database:
+        condition: service_healthy
+      ai-service:
+        condition: service_started
+      media-service:
+        condition: service_started
+      notification-service:
+        condition: service_started
+      engagement-service:
+        condition: service_started
+      content-service:
+        condition: service_started
+      identity-service:
+        condition: service_started
+
+  frontend:
+    container_name: betterx-front-compose
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      ai-service:
+        condition: service_started
+      media-service:
+        condition: service_started
+      notification-service:
+        condition: service_started
+      engagement-service:
+        condition: service_started
+      content-service:
+        condition: service_started
+      identity-service:
+        condition: service_started
+
+volumes:
+  db_data:
+  minio_data:
+  pgvector_data:
+  rabbitmq_data:

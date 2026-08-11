@@ -1,0 +1,9 @@
+.Follows {
+    padding: 1rem;
+}
+
+.follows-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

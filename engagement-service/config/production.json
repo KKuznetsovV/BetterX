@@ -1,0 +1,11 @@
+{
+    "app": {
+        "name": "betterx-engagement-service production"
+    },
+    "db": {
+        "host": "database"
+    },
+    "io": {
+        "url": "http://io:3004"
+    }
+}

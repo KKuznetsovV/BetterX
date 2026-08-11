@@ -1,0 +1,19 @@
+{
+    "app": {
+        "name": "betterx-ai-service production"
+    },
+    "aws": {
+        "bucket": "com.betterx.prod",
+        "avatarsBucket": "com.betterx.prod.avatars",
+        "publicEndpoint": "http://54.246.240.235:9100",
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "endpoint": "http://minio:9000",
+            "credentials": {
+                "accessKeyId": "minioadmin",
+                "secretAccessKey": "minioadmin"
+            }
+        }
+    }
+}

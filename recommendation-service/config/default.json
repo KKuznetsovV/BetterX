@@ -1,0 +1,24 @@
+{
+    "app": {
+        "port": 3011,
+        "name": "BetterX Recommendation Service Dev",
+        "encryptionKey": "MysecretKey"
+    },
+    "pgvector": {
+        "host": "localhost",
+        "port": 5432,
+        "username": "postgres",
+        "password": "postgres",
+        "database": "betterx_recommendations"
+    },
+    "openai": {
+        "apiKey": ""
+    },
+    "mq": {
+        "url": "amqp://betterx:betterx@localhost:5672"
+    },
+    "services": {
+        "identity": { "url": "http://localhost:3010" },
+        "content": { "url": "http://localhost:3009" }
+    }
+}

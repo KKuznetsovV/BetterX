@@ -1,0 +1,5 @@
+{
+    "app": { "port": "BETTERX_RECOMMENDATION_PORT" },
+    "pgvector": { "password": "BETTERX_PGVECTOR_PASSWORD" },
+    "openai": { "apiKey": "OPENAI_API_KEY" }
+}

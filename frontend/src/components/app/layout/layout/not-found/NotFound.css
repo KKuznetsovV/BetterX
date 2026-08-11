@@ -1,0 +1,17 @@
+.not-found {
+	min-height: 320px;
+	display: grid;
+	place-items: center;
+	padding: 24px;
+}
+
+.not-found h1 {
+	max-width: 560px;
+	text-align: center;
+	font-size: clamp(1.5rem, 3vw, 2.4rem);
+	color: var(--brand);
+	background: #fff6ef;
+	border: 1px solid #f0d1bc;
+	border-radius: var(--radius);
+	padding: 20px 24px;
+}

@@ -1,0 +1,67 @@
+.suggested-users {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid #e2e2e2;
+    border-radius: 0.5rem;
+}
+
+.suggested-users-title {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.suggested-users-topic-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.suggested-users-topic-input {
+    flex: 1;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 0.35rem;
+}
+
+.suggested-users-topic-button,
+.suggested-users-topic-clear {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.35rem;
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.suggested-users-topic-button:disabled,
+.suggested-users-topic-clear:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.suggested-users-empty {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.suggested-users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.suggested-user {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.suggested-user-reason {
+    margin: 0;
+    padding-left: 0.25rem;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}

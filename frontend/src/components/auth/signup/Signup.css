@@ -1,0 +1,180 @@
+.Signup {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg, #f0f2f5);
+}
+
+.signup-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-logo {
+    width: 90px;
+    margin-bottom: 0.5rem;
+}
+
+.signup-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    color: var(--text, #1a1a2e);
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.signup-input {
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--border, #ccc);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background: var(--surface-input);
+    color: var(--text);
+}
+
+.signup-input:focus {
+    border-color: var(--accent, #1d9bf0);
+}
+
+.signup-button {
+    margin-top: 0.5rem;
+    padding: 0.7rem;
+    background: var(--brand-2);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.signup-button:hover {
+    background: color-mix(in srgb, var(--brand-2) 85%, #000);
+}
+
+.signup-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.signup-footer span {
+    font-size: 0.85rem;
+    color: var(--muted, #756a5e);
+}
+
+.signup-link {
+    background: var(--brand, #bd4f2a);
+    color: #fff;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0.5rem 1.4rem;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background 0.18s, transform 0.1s;
+}
+
+.signup-link:hover {
+    background: #a3431f;
+    transform: scale(1.04);
+}
+
+.error {
+    color: #e0245e;
+    font-size: 0.8rem;
+    min-height: 1em;
+}
+
+.signup-avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+.signup-avatar-preview {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border, #ccc);
+}
+
+.signup-avatar-label {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.signup-avatar-label span {
+    color: var(--muted, #756a5e);
+    font-weight: 400;
+}
+
+.signup-avatar-modes {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.signup-avatar-mode-btn {
+    padding: 0.3rem 0.9rem;
+    border: 1px solid var(--border, #ccc);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.signup-avatar-mode-btn.active {
+    background: var(--accent, #1d9bf0);
+    border-color: var(--accent, #1d9bf0);
+    color: #fff;
+}
+
+.signup-avatar-mode-btn:hover:not(.active) {
+    border-color: var(--accent, #1d9bf0);
+    color: var(--accent, #1d9bf0);
+}
+
+.signup-avatar-file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+.signup-avatar-filename {
+    font-size: 0.8rem;
+    color: var(--muted, #756a5e);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 260px;
+}

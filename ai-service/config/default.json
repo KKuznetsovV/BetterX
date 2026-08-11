@@ -1,0 +1,26 @@
+{
+    "app": {
+        "port": 3005,
+        "name": "BetterX AI Service Dev",
+        "encryptionKey": "MysecretKey"
+    },
+    "openai": {
+        "apiKey": ""
+    },
+    "gemini": {
+        "apiKey": ""
+    },
+    "aws": {
+        "bucket": "com.betterx.dev",
+        "avatarsBucket": "com.betterx.dev.avatars",
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://localhost:9000"
+        }
+    }
+}

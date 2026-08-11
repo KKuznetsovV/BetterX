@@ -1,0 +1,20 @@
+{
+    "app": {
+        "port": 3006,
+        "name": "BetterX Media Service Dev",
+        "encryptionKey": "MysecretKey"
+    },
+    "aws": {
+        "bucket": "com.betterx.dev",
+        "avatarsBucket": "com.betterx.dev.avatars",
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://localhost:9000"
+        }
+    }
+}

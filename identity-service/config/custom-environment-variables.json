@@ -1,0 +1,17 @@
+{
+    "app": {
+        "port": "BETTERX_IDENTITY_PORT"
+    },
+    "db": {
+        "host": "BETTERX_DB_HOST",
+        "password": "BETTERX_DB_PASSWORD"
+    },
+    "aws": {
+        "connection": {
+            "credentials": {
+                "accessKeyId": "AWS_ACCESS_KEY_ID",
+                "secretAccessKey": "AWS_SECRET_ACCESS_KEY"
+            }
+        }
+    }
+}
