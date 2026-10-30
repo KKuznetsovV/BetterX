@@ -17,6 +17,8 @@ creation, moderation, and social discovery.
 See [system_architecture.md](system_architecture.md) for the full architecture, established
 decisions, and in-progress work.
 
+![BetterX system design](file:///C:/Users/nofrg/Downloads/files/betterx-system-design.png)
+
 ## Architecture at a Glance
 
 | Service | Port | Responsibility |
